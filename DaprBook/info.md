@@ -54,3 +54,22 @@ localhost:6379> HGETALL "DaprCounter||counter"
 git config --global --add safe.directory /home/dmitry/Shared/dapr-tutor
 git config --global user.email "dpoluektov@gmail.com"
 git config --global user.name "Dmitry Poluektov"
+
+
+
+For Backend Api:
+
+By default, a Dapr sidecar relies on the network boundary to limit access to its public API. So,
+clear the checkbox for Configure for HTTPS:
+> [!IMPORTANT]
+> If you leave the **Configure for HTTPS** checkbox checked, the generated ASP.NET
+Core API project includes middleware to redirect client requests to the HTTPS
+endpoint. This breaks communication between the Dapr sidecar and your application,
+unless you explicitly configure the use of HTTPS when running your Dapr application.
+To enable the Dapr sidecar to communicate over HTTPS, include the [`--appssl`]{custom-style=Code} flag in the Dapr command to start the application. Also
+specify the HTTPS port using the [`--app-port`]{custom-style=Code} parameter. The
+remainder of this walkthrough uses plain HTTP communication between the sidecar and
+the application, and requires you to clear the **Configure for HTTPS** checkbox.
+
+Frontend:
+Install-Package Dapr.AspNetCore
