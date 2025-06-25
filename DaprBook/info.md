@@ -73,3 +73,23 @@ the application, and requires you to clear the **Configure for HTTPS** checkbox.
 
 Frontend:
 Install-Package Dapr.AspNetCore
+
+
+docker compose version
+Docker Compose version v2.37.3
+docker compose up --build
+
+https://docs.docker.com/compose/how-tos/file-watch/
+
+dotnet build DaprMultiContainer.sln 
+MSBuild version 17.8.27+3ab07f0cf for .NET
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  MyBackend -> /home/dmitry/Shared/dapr-tutor/DaprBook/02-DaprMultiContainer/DaprMultiContainer/MyBackend/bin/Debug/net8.0/MyBackend.dll
+  MyFrontend -> /home/dmitry/Shared/dapr-tutor/DaprBook/02-DaprMultiContainer/DaprMultiContainer/MyFrontend/bin/Debug/net8.0/MyFrontend.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:16.56
