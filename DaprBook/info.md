@@ -87,10 +87,16 @@ docker compose logs myfrontend
 
 docker compose build --no-cache myfrontend
 
-To generate a developer certificate run 'dotnet dev-certs https'. To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
+To generate a developer certificate run 'dotnet dev-certs https'. 
+To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
 
 docker compose build --no-cache
 
+On Windows and Mac, NOT on Linux?:
 dotnet dev-certs https
 dotnet dev-certs https --trust
+
+docker compose down -v
+docker compose up --build
+
 
