@@ -1,0 +1,52 @@
+services:
+  myfrontend:
+    build:
+      context: .
+      dockerfile: MyFrontEnd/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - dapr-net
+    container_name: myfrontend
+
+  myfrontend-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+      - myfrontend
+    command: [
+      "./daprd",
+      "-app-id", "MyFrontEnd",
+      "-app-port", "80",
+      "-dapr-http-port", "3500",
+      "-dapr-grpc-port", "50001"
+    ]
+    networks:
+      - dapr-net
+
+  mybackend:
+    build:
+      context: .
+      dockerfile: MyBackEnd/Dockerfile
+    ports:
+      - "8081:80"
+    networks:
+      - dapr-net
+    container_name: mybackend
+
+  mybackend-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+      - mybackend
+    command: [
+      "./daprd",
+      "-app-id", "MyBackEnd",
+      "-app-port", "80",
+      "-dapr-http-port", "3501",
+      "-dapr-grpc-port", "50002"
+    ]
+    networks:
+      - dapr-net
+
+networks:
+  dapr-net:
+    driver: bridge
